@@ -12,7 +12,7 @@
                 <div class="d-flex align-items-center">
 
                     <div class="pr-3">
-                        <img class="rounded-circle w-100" style="max-width:45px;" src="{{ $user->profile->profileImage() }}">
+                        <img class="rounded-circle w-100" style="max-width:45px;" src="{{ $post->user->profile->profileImage() }}">
             
                     </div>
                     <div class="font-weight-bold">

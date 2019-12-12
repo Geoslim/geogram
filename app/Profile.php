@@ -10,7 +10,7 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $profileImagePath = ($this->profile_image) ?  $this->profile_image : 'http://localhost/geogram/public/storage/profile/qlxebyinOZM1PhJShuykNKssTkfhKYMA8wO88BXg.png';
+        $profileImagePath = ($this->profile_image) ?  $this->profile_image : 'profile/qlxebyinOZM1PhJShuykNKssTkfhKYMA8wO88BXg.png';
         return '../storage/' . $profileImagePath;
     }
     public function user()

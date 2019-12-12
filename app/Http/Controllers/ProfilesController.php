@@ -39,17 +39,16 @@ class ProfilesController extends Controller
                 $imagePath = request('profile_image')->store('profile', 'public');
                 $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
                 $image->save();
+
+                $imageArray = ['profile_image' => $imagePath]; //allows users to edit profile without needing to upload profile image
             }
-            // dd(array_merge(
-            //     $data,
-            //     ['profile_image' => $imagePath]));
+            
+
+
             auth()->user()->profile()->update(array_merge(
                 $data,
-                ['profile_image' => $imagePath]
-                // 'title' => $data['title'],
-                // 'description' => $data['title'],
-                // 'url' => $data['title'],
-                // 'profile_image' => $imagePath,
+                $imageArray ?? [] //allows users to edit profile without needing to upload profile image
+               
              ) );
 
          return redirect('/profile/' . auth()->user()->id)->with('success', 'Profile Updated Successfully');

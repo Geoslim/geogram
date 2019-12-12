@@ -1,18 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="width:70%;">
+<div class="container" style="width:65%;">
     <div class="row">
         <div class="col-3">
-            <img class="p-4 rounded-circle w-100" src="{{ $user->profile->profileImage() }}" style="background-color:#aaa;">
+            <img class="mt-4 rounded-circle w-75" src="{{ $user->profile->profileImage() }}" style="background-color:#aaa;">
         </div>
-        <div class="col-9  p-5">
-            <div class="d-flex justify-content-between align-items-baseline">
+        <div class="col-9  p-4">
+            <div class="d-flex  align-items-baseline">
                 <div class=""><h3>{{ $user->username }}</h3></div>
-                <a class="btn btn-secondary btn-sm">Follow</a>
-                @can('update', $user->profile)
-                <a href="{{ url('p/create') }}" class="btn btn-secondary btn-sm">Add New Post</a>
-                @endcan
+                <div class="justify-content-between">
+                    <span class="ml-3 mr-3"> | </span>
+                    <a href="" class="mr-4 btn btn-secondary btn-sm">Follow</a>
+                    @can('update', $user->profile)
+                    <a href="{{ url('p/create') }}" class="btn btn-secondary btn-sm">Add New Post</a>
+                    @endcan
+                </div>
             </div>
             
             @can('update', $user->profile)
