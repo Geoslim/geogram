@@ -4,12 +4,12 @@
 <div class="container" style="width:70%;">
     <div class="row">
         <div class="col-3">
-            <img class="p-4 rounded-circle w-100" src="../storage/{{ $user->profile->profile_image }}" >
+            <img class="p-4 rounded-circle w-100" src="{{ $user->profile->profileImage() }}" style="background-color:#aaa;">
         </div>
         <div class="col-9  p-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class=""><h3>{{ $user->username }}</h3></div>
-                <div class="btn btn-secondary btn-sm">Follow</div>
+                <a class="btn btn-secondary btn-sm">Follow</a>
                 @can('update', $user->profile)
                 <a href="{{ url('p/create') }}" class="btn btn-secondary btn-sm">Add New Post</a>
                 @endcan
@@ -26,7 +26,11 @@
             </div>
             <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
             <div>{{$user->profile->description}}</div>
-            <a href="{{ url($user->profile->url)}}" class="font-weight-bold">{{$user->profile->url}}</a>
+            @if(!empty($user->profile->url))
+            <a href="{{ url($user->profile->url)}}" class="font-weight-bold text-dark">{{$user->profile->url}}</a>
+            @else
+            <a href="" class="font-weight-bold"></a>
+            @endif
         </div>
         <div class="row">
             @foreach ($user->posts as $post)
